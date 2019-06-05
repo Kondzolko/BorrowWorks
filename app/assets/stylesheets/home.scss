@@ -1,0 +1,82 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.login-form {
+  width: 340px;
+  margin: 50px auto;
+}
+.login-form form {
+  margin-bottom: 15px;
+  background: #f7f7f7;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+}
+.login-form h2 {
+  margin: 0 0 15px;
+}
+.form-control, .btn {
+  min-height: 38px;
+  border-radius: 2px;
+}
+.btn {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.form-control.form-height-100 {
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+.raptor {
+  width: 348px;
+  height: 340px;
+  background-image: url("raptor.jpg");
+  position: absolute;
+  margin-left: 60%;
+  margin-top: 15%;
+  z-index: -1;
+}
+
+.color-white {
+  color: white;
+}
+
+#footer {
+  bottom: 0;
+  width: 100%;
+}
+
+.content-center {
+  width: 1200px;
+  margin: auto;
+
+}
+
+html, body {
+  height: 100%;
+  margin: 0px;
+}
+.container {
+  height: 90%;
+}
+
+.container-fluid {
+}
+
+
+.form-center {
+  width: 300px;
+  margin: auto;
+}
+
+.pd-top-1 {
+  padding-top: 1rem;
+}
+
+.dp-none {
+  display: none;
+}
