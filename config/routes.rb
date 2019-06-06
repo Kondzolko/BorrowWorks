@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :models
 
-  root to: 'homes#index'
+  root :to => "home#index"
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  post 'home/import_list/', to: 'home#import_list'
+  post 'home/create_list/', to: 'home#create_list'
+  post 'home/import_list_to_db/', to: 'home#import_list_to_db'
 end

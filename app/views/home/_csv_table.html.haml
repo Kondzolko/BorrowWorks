@@ -1,0 +1,16 @@
+#accordion
+  - list.documents.each do |document|
+    %div{"aria-controls" => "collapse-#{document.id}", "aria-expanded" => "false", "data-target" => "#collapse-#{document.id}",
+                  "data-toggle" => "collapse", id: "heading-#{document.id}"}
+      .row
+        .col-md-2
+        .col-md-6
+          - if document.present?
+            %span="#{document.name} (#{document.row_count})"
+          - else
+            %span="#{document.name}"
+        .col-md-4
+          .small
+            = document.status
+    .collapse{"aria-labelledby" => "heading-#{document.id}", "data-parent" => "#accordion", id: "collapse-#{document.id}"}
+      test

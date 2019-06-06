@@ -1,1 +1,17 @@
-test
+.row
+  .container-fluid
+    %button.btn-sm.btn-primary{"data-target" => "#uploadList", "data-toggle" => "modal", :type => "button"}
+      Add
+
+#new-form
+  = render 'new_form'
+
+#list-table
+  = render 'home/list_table'
+
+#model-list
+  - if @list.present?
+    - @list.each do |list|
+      %div{id: "model-list-#{list.id}"}
+        = render 'home/model_list', list: list
+

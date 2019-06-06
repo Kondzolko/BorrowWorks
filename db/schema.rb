@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_174829) do
+ActiveRecord::Schema.define(version: 2019_06_05_205543) do
+
+  create_table "documents", force: :cascade do |t|
+    t.integer "name"
+    t.integer "list_id"
+    t.integer "row_count"
+    t.string "file_path"
+    t.string "mapped_field", default: "{}"
+    t.string "status", default: "List not uploaded to DB"
+    t.text "file_example"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "list_name"
+    t.string "comments"
+    t.integer "uploaded_by"
+    t.integer "quantity"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "models", force: :cascade do |t|
     t.string "email", default: "", null: false

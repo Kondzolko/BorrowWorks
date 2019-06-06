@@ -1,0 +1,6 @@
+$('#list').prepend('<%= j render partial: 'home/list', locals: {list: @created_list} %>')
+$('#model-list').prepend('<div id="model-list-<%= @created_list.id %>"><%= j render partial: 'home/model_list', locals: {list: @created_list} %></div>')
+$('#new-form').html('<%= j render partial: 'home/new_form' %>')
+$('.modal-backdrop.fade.show').hide();
+
+$("#file-list-<%= @created_list.id %>").modal('show');
