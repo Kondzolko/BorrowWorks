@@ -1,0 +1,16 @@
+#uploadList.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "uploadList", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-body
+        = form_for @new_list, url: home_create_list_path, remote: true do |f|
+          %table.table
+            %thead
+              %tr
+                %td.border-top-0.text-blue.text-primary Create List
+            %tbody
+              %tr
+                %td= f.text_field(:list_name, :placeholder =>"Enter List Name", class: "form-control")
+              %tr
+                %td= f.text_field(:comments, :placeholder =>"Enter Comments", class: "form-control")
+          .p-2
+            = f.submit 'Create List', class: 'button btn-sm btn-primary', data: {target: "#", toggle: "modal"}

@@ -1,0 +1,6 @@
+= form_for list.documents.new, url: home_import_list_path, id: 'import_list', remote: true do |f|
+  = f.file_field :file_example, type: 'file', placehold: 'Add New File', id: 'new-file', style: 'display: none;'
+  = f.label 'New File', id: 'new-file-label', for: 'new-file', class: 'btn btn-sm btn-outline-primary mb-0'
+  = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field(:list_id, value: list.id)
+  = f.button 'Submit', class: 'btn btn-primary btn-sm', disabled: true, id: 'submit-form'

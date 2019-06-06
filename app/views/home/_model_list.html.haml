@@ -1,0 +1,10 @@
+.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "file-list-#{list.id}", :role => "dialog", :tabindex => "-1", id: "file-list-#{list.id}"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        = flash_messages
+      .modal-body
+        = render 'home/csv_table', list: list
+
+      .modal-footer.pull-left.no-border
+        = render 'home/modal_footer', list: list

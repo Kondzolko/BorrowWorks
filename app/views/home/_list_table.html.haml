@@ -1,0 +1,18 @@
+%table.table-hover.small{:style => "width:100%"}
+  %thead
+    %tr.text-blue
+      %th List Name
+      %th Comments
+      %th Quantity
+      %th Date Posted
+      %th Uploaded by
+      %th Status
+      %th Delete List
+
+  %tbody#list
+    - if @list.present?
+      - @list.each do |list|
+        = render partial: 'list', locals: {list: list}
+    - else
+      %tr#list-empty
+        %td You do not have any List
