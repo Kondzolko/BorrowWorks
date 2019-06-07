@@ -1,0 +1,9 @@
+- if doc.present? && doc.status == 'List not uploaded to DB'
+  = form_tag home_import_list_to_db_path, remote: true do
+    = hidden_field_tag(:user_id, current_user.id)
+    = hidden_field_tag(:list_conquest_id, doc.id)
+    = hidden_field_tag(:list_id, list.id)
+    = button_tag 'Import To DB', class: 'btn btn-sm btn-primary btn-file pull-right mrgn1-left'
+- else
+  .text-red
+    = doc.status

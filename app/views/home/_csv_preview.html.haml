@@ -1,0 +1,25 @@
+%table{:cellspacing => "0", id: "gvMain#{doc.id}"}
+  %tr.small{class: "GridViewScrollHeader"}
+    %th #
+    %th Our Fields
+    %th Mapped Field
+    - spreadsheet(doc)['body'].each_with_index do |empty_header, index|
+      %td.text-bla= "Row #{index + 1}"
+
+  %tbody
+    - spreadsheet(doc)['header'].each_with_index do |header, index|
+      %tr.small{class: "GridViewScrollItem#{list.id}"}
+        %td="Column #{index + 1}"
+        %td= header
+        = form_tag home_import_list_to_db_path do
+          %td
+            - if list_imported_to_db(list)
+              = select_tag('categories', options_for_select(states_for_selector,
+                          { selected: selected_mapped_field(doc, index) }), csv_table_html_attr.each { |attr| attr} )
+            - else
+              = select_tag('categories', options_for_select(states_for_selector,
+                          {selected: selected_mapped_field(doc, index) } ),
+                          include_blank: true,  class: 'selectric', style: 'border:none;background:none; width: 100px;',
+                          onchange: "UpdateSelectors(#{index + 1}, #{list.id}, this, #{list.id})")
+          - spreadsheet(doc)['body'].each do |body_content|
+            %td.text-bla= body_content[index]

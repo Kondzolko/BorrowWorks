@@ -1,16 +1,27 @@
 #accordion
-  - list.documents.each do |document|
-    %div{"aria-controls" => "collapse-#{document.id}", "aria-expanded" => "false", "data-target" => "#collapse-#{document.id}",
-                  "data-toggle" => "collapse", id: "heading-#{document.id}"}
+  - list.documents.each do |doc|
+    %div{"aria-controls" => "collapse-#{doc.id}", "aria-expanded" => "false",
+        "data-target" => "#collapse-#{doc.id}",
+        "data-toggle" => "collapse", onclick: "FrozeTable('gvMain#{doc.id}',
+        'collapse-#{doc.id}');", id: "heading-#{doc.id}"}
       .row
         .col-md-2
         .col-md-6
-          - if document.present?
-            %span="#{document.name} (#{document.row_count})"
-          - else
-            %span="#{document.name}"
+          %span
+            = document_name(doc)
         .col-md-4
           .small
-            = document.status
-    .collapse{"aria-labelledby" => "heading-#{document.id}", "data-parent" => "#accordion", id: "collapse-#{document.id}"}
-      test
+            = doc.status
+    .collapse{"aria-labelledby" => "heading-#{doc.id}", "data-parent" => "#accordion", id: "collapse-#{doc.id}"}
+      .row.no-margin
+        .container
+          .table
+            - if doc.present?
+              = render 'csv_preview', doc: doc, list: list
+
+          %span.float-left
+            = render 'import_to_db_form', doc: doc, list: list
+
+          %span.float-right.pr-5
+            %i.prev.fa.fa-chevron-left.text-primary{style: 'cursor: pointer;', onclick: "ScrollLeft(#{doc.id})"}
+            %i.next.fa.fa-chevron-right.text-primary{style: 'cursor: pointer;', onclick: "ScrollRight(#{doc.id})"}
